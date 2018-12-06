@@ -86,8 +86,6 @@ class Population:
                 break
 
 
-
-
         if len(new_genome_individual1) != len(genome_individual1) or len(new_genome_individual2) != len(genome_individual1):
 
             print("Diferencies en la llargada del genoma")
@@ -112,7 +110,7 @@ class Population:
         return (child_1,child_2)
 
 
-    def mutation(self, genome_individual): #Metode per mutar. Nomes muta com a molt dos gens (intercanviant la posició) per cada individu (genoma)
+    def mutation(self, genome_individual): 
 
         new_genome_individual = list(genome_individual)
 
@@ -132,7 +130,7 @@ class Population:
 
         return new_genome_individual
 
-    def TournamentSelection(self): #Metode per escollir el proxim pare
+    def TournamentSelection(self): 
 
         best_fitness = None
         i = 0
@@ -157,7 +155,7 @@ class Population:
         return best_individual
 
 
-    def NextGeneration(self): #Metode per generar la següent generació 
+    def NextGeneration(self): 
 
 
         parents = [None,None]
@@ -183,7 +181,7 @@ class Population:
         self.list_population = list_child
         self.AverageFitness()
 
-    def AverageFitness(self): #Calcula la average fitness function
+    def AverageFitness(self):
 
         list_fitness = []
         best_list_fitness = []
@@ -200,7 +198,7 @@ class Population:
         best_list_fitness = list_fitness[0:proportion_of_best]
         self.fitnessavg = sum(best_list_fitness)/len(best_list_fitness)
 
-    def BestIndidivualSoFar(self): #Aquesta funció la fem servir per trobar si existeix algun individu que la seva fitness function sigui 0
+    def BestIndidivualSoFar(self): 
 
         for individual in self.list_population:
 
@@ -212,25 +210,7 @@ class Population:
         return None
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class Individual: #Classe per generar el individu, crea un de nou on la posició de les reines no es repeteix per fila usant el metode .create().
-                  # També permet assignar un genoma específic a un nou individu, aixo es fa servir alhora de generar els fills
+class Individual:
 
     number_of_individual = 0
 
@@ -302,18 +282,18 @@ class Individual: #Classe per generar el individu, crea un de nou on la posició
 
 
 ###############################################
-        #cos del programa #
+        # body of the program #
 ###############################################
 
 poblacio_total = Population(
-    n = 8,                                      #Dimensio del tablero (De moment ho fem per 8 que es el que ens demanen)
-    max_population = 100,                       #Poblacio maxima
-    prob_mutation = 0.03,                       #Probabilitat de que muti un gen
-    number_tournament = 99,                     #Numero de comparacions que es fan per escollir un pare
-    tournament_rand = False,                    #Per cada elecció de pare: si TRUE el numero de comparacions varia entre 0 i number_tournament, si FALSE, el numero de comparacions es number_tournament
-    llargada_one_point_crossover_maxima = 7,    #Posició del genoma on es fara el crossover
-    crosover_rand = True,                       #si True, per cada crossover el punt de tall sera un numero aleatori entre 0 i llargada_one_point_crossover_maxima. Si False, sera sempre llargada_one_point_crossover_maxima
-    proportion_of_best = 0.2)                   #Proporció de la població ordenada de millor a pitjor fitness que volem utilitzar per calcular la avg fitness function (Aquest numero nomes serveix per veure en pantalla com evoluciona la fitness function dels millors a cada iteració )
+    n = 8,                                      
+    max_population = 100,                       
+    prob_mutation = 0.03,                       
+    number_tournament = 99,                     
+    tournament_rand = False,                    
+    llargada_one_point_crossover_maxima = 7,    
+    crosover_rand = True,                        
+    proportion_of_best = 0.2)                    
 
 poblacio_total.initialize()
 i = 0
@@ -329,7 +309,7 @@ for i in range(40000):
     if individual_solution != None:
 
         print(individual_solution.genome)
-        print("Solucio trobada!")
+        print("Solution Found!!!")
         break
 
     i += 1
